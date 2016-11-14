@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:03:09 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/14 17:32:53 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/14 17:53:14 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-t_list	*get_tetriminos_list(const char *file);
+typedef struct	s_tetriminos
+{
+	int			block[4][4];
+}				t_tetriminos;
+
+t_list			*get_tetriminos_list(const char *file);
+t_tetriminos	*new_tetriminos(const char *sample);
 
 #endif
