@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:38 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/14 19:01:08 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/14 21:09:17 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,23 @@ t_tetriminos		*new_tetriminos(const char *sample)
 	y = 0;
 	if (!(tetriminos = create_tetriminos()))
 		return (NULL);
-	while (y++ < 4)
+	while (y < 4)
 	{
-		while (x++ < 4)
+		while (x < 4)
 		{
-			if (*sample != '.' || *sample != '#')
+			if (*sample != '.' && *sample != '#')
 				return (NULL);
-			if (*sample++ == '#')
+			if (*(sample++) == '#')
 				tetriminos->block[y][x] = 1;
+			x++;
 		}
-		if (*sample++ != '\n')
+		if (*(sample++) != '\n')
 			return (NULL);
 		x = 0;
+		y++;
 	}
+	//void	print_content(*t_tetriminos);
+	//print_content(tetriminos);
 	return (tetriminos);
 }
 
@@ -68,7 +72,7 @@ int					get_sample(int fd, char **sample)
 	int				i;
 
 	i = 0;
-	*sample = ft_strnew(4 * 4);
+	*sample = ft_strnew(5 * 4);
 	while (i++ < 4)
 	{
 		if (ft_getline(fd, &buff) > 0)
@@ -77,10 +81,7 @@ int					get_sample(int fd, char **sample)
 			if (ft_strlen(buff) == 5)
 				ft_strcat(*sample, buff);
 			else
-			{
-				printf("%s\n", buff);
 				return (-1);
-			}
 		}
 		else
 			return (0);
@@ -102,6 +103,7 @@ t_list				*get_tetriminos_list(const char *file)
 		return (NULL);
 	if (!(tetriminos = ft_lstnew(new_tetriminos(sample), sizeof(t_tetriminos))))
 		return (NULL);
+	ft_getline(fd, &sample);
 	while ((ret_val = get_sample(fd, &sample)))
 	{
 		if (ret_val == -1)
@@ -109,7 +111,10 @@ t_list				*get_tetriminos_list(const char *file)
 		if (!(tmp = new_tetriminos(sample)))
 			return (NULL);
 		ft_lstaddback(&tetriminos, ft_lstnew(tmp, sizeof(t_tetriminos)));
+		ft_getline(fd, &sample);
 	}
+	void print_content(t_list *elem);
+	print_content(tetriminos);
 	if (close(fd) == -1)
 		return (NULL);
 	return (tetriminos);

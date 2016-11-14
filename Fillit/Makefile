@@ -6,13 +6,14 @@
 #*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/14 16:52:56 by kcosta            #+#    #+#             *#
-#*   Updated: 2016/11/14 17:21:57 by kcosta           ###   ########.fr       *#
+#*   Updated: 2016/11/14 18:56:17 by kcosta           ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
 NAME = fillit
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = 
+#-Wall -Wextra -Werror
 MAKE = make -C
 LIBFT = libft/
 INCLUDESPATH = includes/
