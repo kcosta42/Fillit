@@ -6,21 +6,19 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/14 21:08:29 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 09:04:57 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void	print_content(t_list *elem)
+void	print_content(t_tetriminos *tetriminos)
 {
 	int				x;
 	int				y;
-	t_tetriminos	*tetriminos;
 
 	x = 0;
 	y = 0;
-	tetriminos = (t_tetriminos*)elem->content;
 	while (y < 4)
 	{
 		while (x < 4)
@@ -40,7 +38,7 @@ void	print_content(t_list *elem)
 
 int		main(int argc, char **argv)
 {
-	t_list	*tetriminos;
+	t_tetriminos	**tetriminos;
 
 	if (argc != 2)
 	{
@@ -52,6 +50,12 @@ int		main(int argc, char **argv)
 		ft_putendl("error");
 		return (-1);
 	}
-//	ft_lstiter(tetriminos, &print_content);
+	int index;
+	index = 0;
+	while (tetriminos[index])
+	{
+		print_content(tetriminos[index]);
+		index++;
+	}
 	return (1);
 }

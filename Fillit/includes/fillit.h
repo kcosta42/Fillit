@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:03:09 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/14 20:04:37 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 08:57:06 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_tetriminos
 	int			block[4][4];
 }				t_tetriminos;
 
-t_list			*get_tetriminos_list(const char *file);
+t_tetriminos	**get_tetriminos_list(const char *file);
 t_tetriminos	*new_tetriminos(const char *sample);
 
 #endif
