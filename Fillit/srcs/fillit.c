@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 16:36:18 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 17:03:32 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	print_content(t_tetriminos *tetriminos)
 		ft_putchar('\n');
 		x++;
 	}
+	ft_putstr("origin: ");
+	ft_putnbr(tetriminos->origin.x);
+	ft_putchar(':');
+	ft_putnbr(tetriminos->origin.y);
+	ft_putchar('\n');
 	ft_putchar('\n');
 }
 

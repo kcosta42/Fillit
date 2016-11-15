@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:38 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 16:25:43 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 17:02:20 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ t_tetriminos		*create_tetriminos(void)
 		while (++pos.x < 4)
 			tetriminos->block[pos.y][pos.x] = 0;
 	}
+	return (tetriminos);
+}
+
+t_tetriminos		*get_origin(t_tetriminos *tetriminos)
+{
+	t_vector	min;
+	int			index;
+
+	min.x = 5;
+	min.y = 5;
+	index = 0;
+	while (index < 4)
+	{
+		if (tetriminos->shape[index].x < min.x)
+			min.x = tetriminos->shape[index].x;
+		if (tetriminos->shape[index].y < min.y)
+			min.y = tetriminos->shape[index].y;
+		index++;
+	}
+	tetriminos->origin = min;
 	return (tetriminos);
 }
 
@@ -52,6 +72,7 @@ t_tetriminos		*new_tetriminos(const char *sample)
 	}
 	if (!(check_tetriminos(tetriminos)))
 		return (NULL);
+	tetriminos = get_origin(tetriminos);
 	return (tetriminos);
 }
 

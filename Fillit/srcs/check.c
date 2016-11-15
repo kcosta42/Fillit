@@ -6,13 +6,13 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 09:25:10 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 16:05:30 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 16:57:44 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-int		check_block(t_tetriminos *tetriminos)
+int				check_block(t_tetriminos *tetriminos)
 {
 	int			i;
 	int			j;
@@ -41,7 +41,7 @@ int		check_block(t_tetriminos *tetriminos)
 	return (1);
 }
 
-int		check_tetriminos(t_tetriminos *tetriminos)
+int				check_tetriminos(t_tetriminos *tetriminos)
 {
 	int			block;
 	t_vector	pos;
