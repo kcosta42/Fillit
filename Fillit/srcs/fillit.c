@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 09:04:57 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 15:02:09 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	print_content(t_tetriminos *tetriminos)
 int		main(int argc, char **argv)
 {
 	t_tetriminos	**tetriminos;
+	int				index;
 
 	if (argc != 2)
 	{
@@ -50,7 +51,6 @@ int		main(int argc, char **argv)
 		ft_putendl("error");
 		return (-1);
 	}
-	int index;
 	index = 0;
 	while (tetriminos[index])
 	{
