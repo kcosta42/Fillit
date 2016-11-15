@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 17:03:32 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 17:52:52 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	print_content(t_tetriminos *tetriminos)
 int		main(int argc, char **argv)
 {
 	t_tetriminos	**tetriminos;
+	t_grid			*solver;
 
+	(void)solver;
 	if (argc != 2)
 	{
 		ft_putendl("usage: ./fillit file");

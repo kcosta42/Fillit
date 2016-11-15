@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 09:25:10 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 16:57:44 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 19:30:24 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,30 @@
 
 int				check_block(t_tetriminos *tetriminos)
 {
-	int			i;
-	int			j;
-	int			connected;
+	t_vector	pos;
+	t_vector	connected;
 
-	i = -1;
-	while (++i < 4)
+	pos.x = -1;
+	connected.y = 0;
+	while (++pos.x < 4)
 	{
-		j = -1;
-		connected = 0;
-		while (!connected && ++j < 4)
-		{
-			if ((tetriminos->shape[i].x + 1 == tetriminos->shape[j].x &&
-				tetriminos->shape[i].y == tetriminos->shape[j].y) ||
-				(tetriminos->shape[i].x - 1 == tetriminos->shape[j].x &&
-				tetriminos->shape[i].y == tetriminos->shape[j].y) ||
-				(tetriminos->shape[i].x == tetriminos->shape[j].x &&
-				tetriminos->shape[i].y + 1 == tetriminos->shape[j].y) ||
-				(tetriminos->shape[i].x == tetriminos->shape[j].x &&
-				tetriminos->shape[i].y - 1 == tetriminos->shape[j].y))
-				connected = 1;
-		}
-		if (!connected)
+		pos.y = -1;
+		connected.x = 0;
+		while (++pos.y < 4)
+			if ((tetriminos->shape[pos.x].x + 1 == tetriminos->shape[pos.y].x &&
+				tetriminos->shape[pos.x].y == tetriminos->shape[pos.y].y) ||
+				(tetriminos->shape[pos.x].x - 1 == tetriminos->shape[pos.y].x &&
+				tetriminos->shape[pos.x].y == tetriminos->shape[pos.y].y) ||
+				(tetriminos->shape[pos.x].x == tetriminos->shape[pos.y].x &&
+				tetriminos->shape[pos.x].y + 1 == tetriminos->shape[pos.y].y) ||
+				(tetriminos->shape[pos.x].x == tetriminos->shape[pos.y].x &&
+				tetriminos->shape[pos.x].y - 1 == tetriminos->shape[pos.y].y))
+				connected.x++;
+		connected.y = (connected.x > 1) ? 1 : connected.y;
+		if (!connected.x)
 			return (0);
 	}
-	return (1);
+	return (connected.y);
 }
 
 int				check_tetriminos(t_tetriminos *tetriminos)
