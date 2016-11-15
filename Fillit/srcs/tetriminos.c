@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:38 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 15:00:49 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 16:25:43 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,14 @@ t_tetriminos		*create_tetriminos(void)
 	t_vector		pos;
 	t_tetriminos	*tetriminos;
 
-	pos.x = 0;
-	pos.y = 0;
+	pos.y = -1;
 	if (!(tetriminos = (t_tetriminos*)ft_memalloc(sizeof(t_tetriminos))))
 		return (NULL);
-	while (pos.y < 4)
+	while (++pos.y < 4)
 	{
-		while (pos.x < 4)
-		{
+		pos.x = -1;
+		while (++pos.x < 4)
 			tetriminos->block[pos.y][pos.x] = 0;
-			pos.x++;
-		}
-		pos.x = 0;
-		pos.y++;
 	}
 	return (tetriminos);
 }
@@ -39,24 +34,21 @@ t_tetriminos		*new_tetriminos(const char *sample)
 	t_vector		pos;
 	t_tetriminos	*tetriminos;
 
-	pos.x = 0;
-	pos.y = 0;
+	pos.y = -1;
 	if (!(tetriminos = create_tetriminos()))
 		return (NULL);
-	while (pos.y < 4)
+	while (++pos.y < 4)
 	{
-		while (pos.x < 4)
+		pos.x = -1;
+		while (++pos.x < 4)
 		{
 			if (*sample != '.' && *sample != '#')
 				return (NULL);
 			if (*(sample++) == '#')
 				tetriminos->block[pos.y][pos.x] = 1;
-			pos.x++;
 		}
 		if (*(sample++) != '\n')
 			return (NULL);
-		pos.x = 0;
-		pos.y++;
 	}
 	if (!(check_tetriminos(tetriminos)))
 		return (NULL);

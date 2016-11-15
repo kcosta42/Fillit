@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 15:02:09 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/15 16:36:18 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,21 @@ void	print_content(t_tetriminos *tetriminos)
 		y++;
 		x = 0;
 	}
+	x = 0;
+	while (x < 4)
+	{
+		ft_putnbr(tetriminos->shape[x].x);
+		ft_putchar(':');
+		ft_putnbr(tetriminos->shape[x].y);
+		ft_putchar('\n');
+		x++;
+	}
 	ft_putchar('\n');
 }
 
 int		main(int argc, char **argv)
 {
 	t_tetriminos	**tetriminos;
-	int				index;
 
 	if (argc != 2)
 	{
@@ -51,6 +59,7 @@ int		main(int argc, char **argv)
 		ft_putendl("error");
 		return (-1);
 	}
+	int index;
 	index = 0;
 	while (tetriminos[index])
 	{
