@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:38 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/15 17:02:20 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/16 13:59:44 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_tetriminos		*create_tetriminos(void)
 {
+	static int		index = 0;
 	t_vector		pos;
 	t_tetriminos	*tetriminos;
 
@@ -26,16 +27,20 @@ t_tetriminos		*create_tetriminos(void)
 		while (++pos.x < 4)
 			tetriminos->block[pos.y][pos.x] = 0;
 	}
+	tetriminos->letter = 'A' + index++;
 	return (tetriminos);
 }
 
 t_tetriminos		*get_origin(t_tetriminos *tetriminos)
 {
 	t_vector	min;
+	t_vector	max;
 	int			index;
 
 	min.x = 5;
 	min.y = 5;
+	max.x = 0;
+	max.y = 0;
 	index = 0;
 	while (index < 4)
 	{
@@ -43,9 +48,15 @@ t_tetriminos		*get_origin(t_tetriminos *tetriminos)
 			min.x = tetriminos->shape[index].x;
 		if (tetriminos->shape[index].y < min.y)
 			min.y = tetriminos->shape[index].y;
+		if (tetriminos->shape[index].x > max.x)
+			max.x = tetriminos->shape[index].x;
+		if (tetriminos->shape[index].y > max.y)
+			max.y = tetriminos->shape[index].y;
 		index++;
 	}
 	tetriminos->origin = min;
+	tetriminos->size.x = max.x - min.x;
+	tetriminos->size.y = max.y - min.y;
 	return (tetriminos);
 }
 
