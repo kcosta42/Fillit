@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:03:09 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 14:02:07 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/16 16:32:45 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	s_grid
 	t_vector	prev_pos;
 }				t_grid;
 
+t_grid			*initialise_grid(t_grid *grid);
 void			solve(t_grid **grid, t_tetriminos **tetriminos);
 t_tetriminos	**get_tetriminos_list(const char *file);
 int				check_tetriminos(t_tetriminos *tetriminos);

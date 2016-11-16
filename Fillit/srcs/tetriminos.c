@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:38 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 13:59:44 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/16 15:58:47 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ t_tetriminos		**get_tetriminos_list(const char *file)
 	index = 0;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
-	tetriminos = (t_tetriminos**)ft_memalloc(sizeof(t_tetriminos*) * 26);
+	tetriminos = (t_tetriminos**)ft_memalloc(sizeof(t_tetriminos*) * 27);
 	while ((ret_val = get_sample(fd, &sample)))
 	{
 		if (ret_val == -1)

@@ -6,56 +6,25 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 14:56:06 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/16 16:31:49 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void	print_content(t_tetriminos *tetriminos)
+t_grid	*initialise_grid(t_grid *grid)
 {
-	int				x;
-	int				y;
+	t_vector	pos;
 
-	x = 0;
-	y = 0;
-	while (y < 4)
-	{
-		while (x < 4)
-		{
-			if (tetriminos->block[y][x])
-				ft_putchar('#');
-			else
-				ft_putchar('.');
-			x++;
-		}
-		ft_putchar('\n');
-		y++;
-		x = 0;
-	}
-	x = 0;
-	while (x < 4)
-	{
-		ft_putnbr(tetriminos->shape[x].x);
-		ft_putchar(':');
-		ft_putnbr(tetriminos->shape[x].y);
-		ft_putchar('\n');
-		x++;
-	}
-	ft_putstr("origin: ");
-	ft_putnbr(tetriminos->origin.x);
-	ft_putchar(':');
-	ft_putnbr(tetriminos->origin.y);
-	ft_putchar('\n');
-	ft_putchar(tetriminos->letter);
-	ft_putchar('\n');
-	ft_putstr("width: ");
-	ft_putnbr(tetriminos->size.x);
-	ft_putchar('\n');
-	ft_putstr("height: ");
-	ft_putnbr(tetriminos->size.y);
-	ft_putchar('\n');
-	ft_putchar('\n');
+	pos.x = 0;
+	pos.y = -1;
+	grid = (t_grid*)ft_memalloc(sizeof(grid));
+	grid->square = (char**)ft_memalloc(sizeof(char*) * 17);
+	while (++pos.y < 16)
+		grid->square[pos.y] = ft_strdup("................");
+	grid->prev_pos.x = 2;
+	grid->prev_pos.y = 2;
+	return (grid);
 }
 
 void	print_result(t_grid *grid)
@@ -63,10 +32,10 @@ void	print_result(t_grid *grid)
 	t_vector	pos;
 
 	pos.y = 0;
-	while (pos.y < grid->prev_pos.y)
+	while (pos.y <= grid->prev_pos.y)
 	{
 		pos.x = 0;
-		while (pos.x < grid->prev_pos.x)
+		while (pos.x <= grid->prev_pos.x)
 		{
 			ft_putchar(grid->square[pos.y][pos.x]);
 			pos.x++;
@@ -80,9 +49,7 @@ int		main(int argc, char **argv)
 {
 	t_tetriminos	**tetriminos;
 	t_grid			*grid;
-	int index;
-	
-	index = 0;
+
 	if (argc != 2)
 	{
 		ft_putendl("usage: ./fillit file");
@@ -94,11 +61,6 @@ int		main(int argc, char **argv)
 		return (-1);
 	}
 	solve(&grid, tetriminos);
-	while (tetriminos[index])
-	{
-		print_content(tetriminos[index]);
-		index++;
-	}
 	print_result(grid);
 	return (1);
 }
