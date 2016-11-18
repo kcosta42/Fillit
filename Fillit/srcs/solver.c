@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 17:10:44 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 16:32:20 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/18 13:20:16 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ void		solve(t_grid **grid, t_tetriminos **tetriminos)
 	*grid = initialise_grid(*grid);
 	while (!solver(grid, tetriminos))
 	{
+		reset_grid(grid);
 		(*grid)->prev_pos.x++;
 		(*grid)->prev_pos.y++;
-		reset_grid(grid);
 	}
 }
