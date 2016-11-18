@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 16:51:38 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 18:21:46 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/18 16:17:50 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,17 @@ t_tetriminos		*new_tetriminos(const char *sample)
 
 int					get_sample(int fd, char **sample)
 {
+	static int		lines = 0;
 	char			*buff;
 	int				i;
 
+	if (line > 129)
+		return (-1);
 	i = 0;
 	*sample = ft_strnew(5 * 4);
 	while (i++ < 4)
 	{
+		line++;
 		if (ft_getline(fd, &buff) > 0)
 		{
 			buff = ft_strjoin(buff, "\n");
