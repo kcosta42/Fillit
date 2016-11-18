@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:00:28 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/14 18:21:14 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/18 11:19:11 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static int	read_files(const int fd, char **file)
+int		read_files(const int fd, char **file)
 {
 	int		read_ret;
 	char	*buff;
@@ -40,7 +40,7 @@ static int	read_files(const int fd, char **file)
 	return (1);
 }
 
-int			ft_getline(const int fd, char **line)
+int		ft_getline(const int fd, char **line)
 {
 	static char		*file;
 	char			*pfile;
@@ -52,6 +52,8 @@ int			ft_getline(const int fd, char **line)
 		file = NULL;
 		return (-1);
 	}
+	if (!file)
+		return (0);
 	if (!(ft_strcmp(file, "")))
 		return (0);
 	pfile = file;

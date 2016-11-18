@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:20:05 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 16:31:49 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/18 11:20:21 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_grid	*initialise_grid(t_grid *grid)
 	grid->square = (char**)ft_memalloc(sizeof(char*) * 17);
 	while (++pos.y < 16)
 		grid->square[pos.y] = ft_strdup("................");
-	grid->prev_pos.x = 2;
-	grid->prev_pos.y = 2;
+	grid->prev_pos.x = 1;
+	grid->prev_pos.y = 1;
 	return (grid);
 }
 
