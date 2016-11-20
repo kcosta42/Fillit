@@ -6,7 +6,7 @@
 /*   By: kcosta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:16:09 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/14 17:11:05 by kcosta           ###   ########.fr       */
+/*   Updated: 2016/11/20 10:50:23 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+
 # define BUFF_SIZE 1024
 
 typedef	unsigned char	t_byte;
