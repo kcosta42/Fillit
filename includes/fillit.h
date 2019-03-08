@@ -6,7 +6,7 @@
 /*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:03:09 by kcosta            #+#    #+#             */
-/*   Updated: 2016/11/16 18:20:56 by kcosta           ###   ########.fr       */
+/*   Updated: 2019/03/08 15:14:46 by kcosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdio.h>
 
 typedef struct	s_vector
